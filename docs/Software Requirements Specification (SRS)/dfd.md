@@ -30,7 +30,7 @@ The system manages:
 
 The following diagram shows the high-level interaction between external entities and the Student Assignment Tracker system.
 
-![Initial DFD Diagram](../images/initial_DFD.png)
+![Initial DFD Diagram](../images/Student_assignment_tracker_DFD.png)
 
 ---
 
