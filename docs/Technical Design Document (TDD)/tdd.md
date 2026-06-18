@@ -1,6 +1,8 @@
 # Student Assignment Tracker - Technical Design Document (TDD)
 
+
 ## Technical Stack
+
 
 | Layer           | Technology                |
 | --------------- | ------------------------- |
@@ -10,13 +12,18 @@
 | Authentication  | JWT                       |
 | Version Control | GitHub                    |
 
+
 ---
+
 
 ## Backend Design by Layer
 
+
 ### 1. Controller Layer
 
+
 * FastAPI routers organized by module:
+
 
   * `/auth`
   * `/students`
@@ -25,14 +32,18 @@
   * `/dashboard`
 * Responsibilities:
 
+
   * Request handling
   * Input validation
   * Response formatting
   * HTTP status management
 
+
 ### 2. Service Layer
 
+
 * Handles business logic:
+
 
   * Assignment creation and updates
   * Submission management
@@ -40,30 +51,40 @@
   * Progress calculation
   * Dashboard statistics
 
+
 ### 3. Repository Layer
+
 
 * MongoDB data access layer.
 * Responsibilities:
+
 
   * CRUD operations
   * Query optimization
   * Data retrieval and filtering
   * Collection management
 
+
 ### 4. Authentication Layer
+
 
 * JWT-based authentication.
 * Password hashing using secure algorithms.
 * Protected API routes for authorized users only.
 
+
 ### 5. Validation Layer
+
 
 * Input validation using FastAPI and Pydantic models.
 * Prevents invalid or incomplete data from entering the system.
 
+
 ### 6. Error Handling
 
+
 * Standardized error responses.
+
 
 ```json
 {
@@ -72,15 +93,20 @@
 }
 ```
 
+
 * Global exception handling for:
+
 
   * Validation errors
   * Authentication errors
   * Database errors
 
+
 ### 7. Logging
 
+
 * Logs important system events:
+
 
   * User login attempts
   * Assignment creation
@@ -88,13 +114,17 @@
   * Submission activities
   * System errors
 
+
 ### 8. Performance Optimization
+
 
 * Efficient MongoDB queries.
 * Indexed collections for faster searches.
 * Lightweight API responses.
 
+
 ### 9. Security Measures
+
 
 * Password hashing
 * JWT authentication
@@ -102,16 +132,21 @@
 * Protected routes
 * Secure API communication
 
+
 ### 10. Scalability Strategy
+
 
 1. Modular backend architecture.
 2. Stateless API design.
 3. Independent frontend and backend deployment.
 4. Database indexing for large datasets.
 
+
 ---
 
+
 ## Frontend Design Highlights
+
 
 * Responsive user interface.
 * Type-safe development using TypeScript.
@@ -119,9 +154,12 @@
 * Fast development and build process using Vite.
 * Dashboard for assignment tracking and progress monitoring.
 
+
 ---
 
+
 ## Project Structure
+
 
 ```text
 student-assignment-tracker/
@@ -142,9 +180,12 @@ student-assignment-tracker/
 └── README.md
 ```
 
+
 ---
 
+
 ## Design Goals
+
 
 | Goal            | Description                              |
 | --------------- | ---------------------------------------- |
@@ -154,9 +195,12 @@ student-assignment-tracker/
 | Scalability     | Support increasing users and assignments |
 | Responsiveness  | Works on desktop and mobile devices      |
 
+
 ---
 
+
 ## Design-to-Requirement Mapping
+
 
 | Design Area           | Related Features                                |
 | --------------------- | ----------------------------------------------- |
@@ -166,3 +210,6 @@ student-assignment-tracker/
 | Dashboard Module      | Track progress and deadlines                    |
 | Database Module       | Store users, assignments, and submissions       |
 | Security Module       | Authentication, validation, and data protection |
+
+
+
