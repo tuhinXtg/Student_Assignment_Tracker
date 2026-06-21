@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Login from "./pages/Login";
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
 
         <Route 
           path="/" 
-          element={<h1>Login Page</h1>} 
+          element={<Login />} 
         />
 
         <Route 
