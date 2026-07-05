@@ -1,31 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
 function App() {
-
   return (
-    <BrowserRouter>
-
-      <Routes>
-
-        <Route 
-          path="/" 
-          element={<h1>Login Page</h1>} 
-        />
-
-        <Route 
-          path="/dashboard" 
-          element={<h1>Dashboard Page</h1>} 
-        />
-
-        <Route 
-          path="/assignments" 
-          element={<h1>Assignments Page</h1>} 
-        />
-
-      </Routes>
-
-    </BrowserRouter>
+    <div className="min-h-screen flex items-center justify-center bg-blue-100">
+      <h1 className="text-4xl font-bold text-blue-700">
+        Tailwind is working! 
+      </h1>
+    </div>
   );
 }
 
