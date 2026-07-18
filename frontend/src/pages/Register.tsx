@@ -2,6 +2,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
+import { registerUser } from "../services/auth";
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ export default function Register() {
         }));
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const newErrors = {
@@ -98,8 +99,31 @@ export default function Register() {
             return;
         }
 
-        console.log("Form Submitted");
-        console.log(formData);
+        try {
+            const response = await registerUser({
+                full_name: formData.fullName,
+                student_id: formData.studentId,
+                email: formData.email,
+                password: formData.password,
+            });
+
+            console.log("Account created successfully!");
+            console.log(response);
+
+            setFormData({
+                fullName: "",
+                studentId: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+            });
+        } catch (error) {
+            if (error instanceof Error) {
+                alert(error.message);
+            } else {
+                alert("Registration failed.");
+            }
+        }
     };
 
     return (
