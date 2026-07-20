@@ -8,7 +8,7 @@ function App() {
         <Routes>
             <Route
                 path="/"
-                element={<Navigate to="/login" replace />}
+                element={<Navigate to="/register" replace />}
             />
 
             <Route
