@@ -22,3 +22,29 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.python-version
+
+# Virtual environments
+.venv/
+venv/
+backend/.venv/
+
+# Environment variables
+.env
+backend/.env
+
+# Pytest
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
