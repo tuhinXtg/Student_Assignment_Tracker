@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
@@ -194,6 +195,17 @@ export default function Register() {
 
                 <div className="mt-6">
                     <AuthButton text="Create Account" />
+                </div>
+                <div className="mt-4 text-center">
+                    <p className="text-sm text-gray-600">
+                        Already have an account?{" "}
+                        <Link
+                            to="/login"
+                            className="text-blue-600 hover:text-blue-800 hover:underline font-medium"
+                        >
+                            Login
+                        </Link>
+                    </p>
                 </div>
             </form>
         </AuthLayout>
