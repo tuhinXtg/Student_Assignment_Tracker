@@ -9,7 +9,7 @@ function App() {
         <Routes>
             <Route
                 path="/"
-                element={<Navigate to="/dashboard" replace />}
+                element={<Navigate to="/login" replace />}
             />
 
             <Route

@@ -1,11 +1,12 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import { registerUser } from "../services/auth";
 
 export default function Register() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: "",
         studentId: "",
@@ -108,8 +109,9 @@ export default function Register() {
                 password: formData.password,
             });
 
-            console.log("Account created successfully!");
+            // console.log("Account created successfully!");
             console.log(response);
+            navigate("/login")
 
             setFormData({
                 fullName: "",

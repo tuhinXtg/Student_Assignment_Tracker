@@ -1,11 +1,14 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import { loginUser } from "../services/auth";
 
 export default function Login() {
+    const navigate = useNavigate();
+
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -74,10 +77,10 @@ export default function Login() {
                 "Stored Token:",
                 localStorage.getItem("access_token")
             );
-
-            alert("Login successful!");
-
             console.log(response);
+
+            navigate("/dashboard")
+
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message);
