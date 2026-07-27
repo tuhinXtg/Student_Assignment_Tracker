@@ -1,5 +1,6 @@
 import WelcomeCard from "../components/dashboard/WelcomeCard";
 import StatisticsCards from "../components/dashboard/StatisticsCards";
+import ProgressCard from "../components/dashboard/ProgressCard";
 
 export default function Dashboard() {
     return (
@@ -8,6 +9,8 @@ export default function Dashboard() {
                 <WelcomeCard />
 
                 <StatisticsCards />
+
+                <ProgressCard />
             </h1>
         </div>
     );
