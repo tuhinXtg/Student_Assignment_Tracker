@@ -7,12 +7,12 @@ export default function WelcomeCard() {
     });
 
     return (
-        <div className="bg-white rounded-xl shadow-md p-6">
-            <h1 className="text-3xl font-bold text-gray-800">
+        <div className="bg-white rounded-xl shadow-md p-1">
+            <h1 className="text-lg font-bold text-gray-800">
                 👋 Welcome Back
             </h1>
 
-            <p className="mt-2 text-gray-600">
+            <p className="text-sm pl-7.5 text-gray-600">
                 Today is {today}
             </p>
         </div>
