@@ -1,0 +1,14 @@
++ [36magents/fix-student-assignment-tracker-color[m
++ [36magents/project-capabilities-overview[m
++ [36magents/project-status-demonstration[m
+  docs/features[m
+  feature/auth-navigation-ui[m
+  feature/auth-protection[m
++ [36mfeature/backend-registration[m
+  feature/backend-scaffold[m
+  feature/dashboard-home[m
+  feature/dashboard-navigation[m
+  feature/frontend-registration[m
+  feature/frontend-setup[m
+  feature/user-registration[m
+* [32mmain[m
