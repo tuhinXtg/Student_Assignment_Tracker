@@ -3,6 +3,7 @@ from beanie import init_beanie
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.models.user import User
+from app.models.course import Course
 
 load_dotenv()
 
@@ -17,6 +18,7 @@ async def init_db():
     await init_beanie(
         database=database,
         document_models=[
-            User
+            User,
+            Course
         ]
     )

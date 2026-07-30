@@ -14,6 +14,7 @@ export default function Dashboard() {
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
+            
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                 <div className="flex-1">
                     <WelcomeCard />

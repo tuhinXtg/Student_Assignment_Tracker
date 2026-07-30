@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import AddCourse from "./pages/AddCourse";
+import Courses from "./pages/Courses.tsx";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
@@ -27,6 +29,24 @@ function App() {
                 element={
                     <ProtectedRoute>
                         <Dashboard />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/add-course"
+                element={
+                    <ProtectedRoute>
+                        <AddCourse />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/courses"
+                element={
+                    <ProtectedRoute>
+                        <Courses />
                     </ProtectedRoute>
                 }
             />
