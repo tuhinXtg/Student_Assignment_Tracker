@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import AddCourse from "./pages/AddCourse";
 import Courses from "./pages/Courses.tsx";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import EditCourse from "./pages/EditCourse.tsx";
 
 function App() {
     return (
@@ -38,6 +39,15 @@ function App() {
                 element={
                     <ProtectedRoute>
                         <AddCourse />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/edit-course/:courseId"
+                element={
+                    <ProtectedRoute>
+                        <EditCourse />
                     </ProtectedRoute>
                 }
             />

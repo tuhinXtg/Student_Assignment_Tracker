@@ -1,14 +1,34 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import AuthInput from "../auth/AuthInput";
 import AuthButton from "../auth/AuthButton";
-import { createCourse } from "../../services/courses.ts";
 
-export default function CourseForm() {
+interface CourseFormProps {
+    initialData?: {
+        courseName: string;
+        courseCode: string;
+        instructor: string;
+        semester: string;
+    };
+    onSubmit: (data: {
+        course_name: string;
+        course_code: string;
+        instructor?: string;
+        semester?: string;
+    }) => Promise<void>;
+    buttonText: string;
+}
+
+export default function CourseForm({
+    initialData,
+    onSubmit,
+    buttonText,
+}: CourseFormProps) {
+
     const [formData, setFormData] = useState({
-        courseName: "",
-        courseCode: "",
-        instructor: "",
-        semester: "",
+        courseName: initialData?.courseName || "",
+        courseCode: initialData?.courseCode || "",
+        instructor: initialData?.instructor || "",
+        semester: initialData?.semester || "",
     });
 
     const [error, setError] = useState("");
@@ -23,7 +43,9 @@ export default function CourseForm() {
         }));
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (
+        event: FormEvent<HTMLFormElement>
+    ) => {
         event.preventDefault();
 
         setError("");
@@ -35,16 +57,14 @@ export default function CourseForm() {
         }
 
         try {
-            const response = await createCourse({
+            await onSubmit({
                 course_name: formData.courseName,
                 course_code: formData.courseCode,
                 instructor: formData.instructor,
                 semester: formData.semester,
             });
 
-            console.log("Course created:", response);
-
-            setSuccess("Course added successfully!");
+            setSuccess("Operation completed successfully!");
 
             setFormData({
                 courseName: "",
@@ -54,8 +74,8 @@ export default function CourseForm() {
             });
 
         } catch (error) {
-            setError("Failed to add course. Please try again.");
             console.error(error);
+            setError("Operation failed. Please try again.");
         }
     };
 
@@ -64,13 +84,11 @@ export default function CourseForm() {
             onSubmit={handleSubmit}
             className="bg-white rounded-xl shadow-md p-6 space-y-4"
         >
-
             {error && (
                 <p className="text-red-600">
                     {error}
                 </p>
             )}
-
 
             {success && (
                 <p className="text-green-600">
@@ -114,7 +132,7 @@ export default function CourseForm() {
                 placeholder="Enter semester"
             />
 
-            <AuthButton text="Add Course" />
+            <AuthButton text={buttonText} />
         </form>
     );
 }
