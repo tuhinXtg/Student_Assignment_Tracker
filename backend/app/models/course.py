@@ -1,4 +1,4 @@
-from beanie import Document
+from beanie import Document, PydanticObjectId
 from typing import Optional
 
 
@@ -8,6 +8,7 @@ class Course(Document):
     instructor: Optional[str] = None
     semester: Optional[str] = None
 
+    user_id: PydanticObjectId
 
     class Settings:
         name = "courses"
