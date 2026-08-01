@@ -43,6 +43,26 @@ export async function getCourses() {
     return await response.json();
 }
 
+export async function getCourseById(courseId: string) {
+    const token = localStorage.getItem("access_token");
+
+    const response = await fetch(
+        `${API_BASE_URL}/courses/${courseId}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch course");
+    }
+
+    return await response.json();
+}
+
 export async function updateCourse(
     courseId: string,
     course: CourseData

@@ -1,17 +1,27 @@
-import CourseForm from "../components/courses/CourseForm";
+import CourseForm from "../components/courses/CourseForm.tsx";
+import { createCourse } from "../services/courses";
 
+export default function AddCourse() {
 
-export default function AddCourse(){
-    return(
-        <div className="min-h-screen bg-gray-100 p-6">
-            <div className="max-w2xl mx-auto">
-                <h1 className="text-3xl text-center text-bold font-bold text-gray-600 mb-6">
-                    Add New Course
+    const handleCreateCourse = async (data: {
+        course_name: string;
+        course_code: string;
+        instructor?: string;
+        semester?: string;
+    }) => {
+        await createCourse(data);
+    };
 
-                </h1>
+    return (
+        <div className="p-6">
+            <h1 className="text-3xl font-bold mb-6">
+                Add Course
+            </h1>
 
-                <CourseForm />
-            </div>
+            <CourseForm
+                onSubmit={handleCreateCourse}
+                buttonText="Add Course"
+            />
         </div>
-    )
+    );
 }

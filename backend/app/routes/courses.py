@@ -45,6 +45,27 @@ async def get_courses(
 
     return courses
 
+@router.get("/{course_id}")
+async def get_course(
+    course_id: str,
+    current_user: User = Depends(get_current_user),
+):
+
+    course = await Course.get(course_id)
+
+    if not course:
+        raise HTTPException(
+            status_code=404,
+            detail="Course not found",
+        )
+
+    if course.user_id != current_user.id:
+        raise HTTPException(
+            status_code=403,
+            detail="You are not authorized to view this course.",
+        )
+
+    return course
 
 @router.put("/{course_id}")
 async def update_course(

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     getCourses,
     deleteCourse,
@@ -15,6 +16,7 @@ interface Course {
 export default function Courses() {
     const [courses, setCourses] = useState<Course[]>([]);
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const loadCourses = async () => {
         try {
@@ -101,7 +103,8 @@ export default function Courses() {
 
                             <div className="flex gap-3 mt-5">
                                 <button
-                                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                    onClick={() => navigate(`/edit-course/${course._id}`)}
+                                    className="bg-blue-600 text-white px-4 py-2 rounded"
                                 >
                                     Edit
                                 </button>
