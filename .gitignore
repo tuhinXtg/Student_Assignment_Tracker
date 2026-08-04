@@ -49,3 +49,7 @@ backend/venv/
 
 # Ruff
 .ruff_cache/
+
+# Repo instructions
+AGENTS.md
+AGRNTS.md
