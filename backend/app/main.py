@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database.connection import init_db
 from app.routes.auth import router as auth_router
 from app.routes.courses import router as courses_router
+from app.routes.assignment import router as assignments_router
 
 
 @asynccontextmanager
@@ -35,6 +36,8 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(courses_router)
+app.include_router(assignments_router)
+
 
 @app.get("/")
 def root():

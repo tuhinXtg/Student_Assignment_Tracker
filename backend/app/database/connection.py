@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.models.user import User
 from app.models.course import Course
+from app.models.assignment import Assignment
 
 load_dotenv()
 
@@ -19,6 +20,7 @@ async def init_db():
         database=database,
         document_models=[
             User,
-            Course
+            Course,
+            Assignment
         ]
     )
