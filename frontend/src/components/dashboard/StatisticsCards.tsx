@@ -1,20 +1,31 @@
-export default function StatisticsCards() {
+interface StatisticsCardsProps {
+    stats: {
+        total: number;
+        pending: number;
+        completed: number;
+        overdue: number;
+    };
+}
+
+export default function StatisticsCards({
+    stats,
+}: StatisticsCardsProps) {
     const statistics = [
         {
             title: "Total Assignments",
-            value: 0,
+            value: stats.total,
         },
         {
             title: "Pending",
-            value: 0,
+            value: stats.pending,
         },
         {
             title: "Completed",
-            value: 0,
+            value: stats.completed,
         },
         {
             title: "Overdue",
-            value: 0,
+            value: stats.overdue,
         },
     ];
 

@@ -9,11 +9,15 @@ export interface AssignmentData {
     course_id: string;
 }
 
+export interface Assignment extends AssignmentData {
+    _id: string;
+}
+
 function getToken() {
     return localStorage.getItem("access_token");
 }
 
-export async function getAssignments() {
+export async function getAssignments(): Promise<Assignment[]> {
     const response = await fetch(`${API_BASE_URL}/assignments/`, {
         headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -24,7 +28,7 @@ export async function getAssignments() {
         throw new Error("Failed to fetch assignments");
     }
 
-    return response.json();
+    return (await response.json()) as Assignment[];
 }
 
 export async function getAssignmentById(id: string) {
