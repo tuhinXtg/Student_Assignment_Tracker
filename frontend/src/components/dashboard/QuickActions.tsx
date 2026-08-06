@@ -7,7 +7,10 @@ export default function QuickActions() {
         <div className="bg-white rounded-xl shadow-md p-6 mt-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
-                <button className="bg-blue-400 text-white text-xl rounded-lg px-3 py-3 hover:bg-blue-500 transition">
+                <button
+                    onClick={() => navigate("/add-assignment")}
+                    className="bg-blue-400 text-white text-xl rounded-lg px-3 py-3 hover:bg-blue-500 transition"
+                >
                     ➕ Add Assignment
                 </button>
 
@@ -25,7 +28,10 @@ export default function QuickActions() {
                     📖 View Courses
                 </button>
 
-                <button className="bg-gray-500 text-white text-xl rounded-lg px-4 py-3 hover:bg-gray-800 transition">
+                <button
+                    onClick={() => navigate("/assignments")}
+                    className="bg-gray-500 text-white text-xl rounded-lg px-4 py-3 hover:bg-gray-800 transition"
+                >
                     📋 View Assignments
                 </button>
 
