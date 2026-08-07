@@ -27,6 +27,8 @@ export default function Dashboard() {
         overdue: 0,
     });
 
+    const [completionPercentage, setCompletionPercentage] = useState(0);
+
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -56,12 +58,19 @@ export default function Dashboard() {
                     );
                 }).length;
 
+                const progress =
+                    total === 0
+                        ? 0
+                        : Math.round((completed / total) * 100);
+
                 setStats({
                     total,
                     pending,
                     completed,
                     overdue,
                 });
+
+                setCompletionPercentage(progress);
             } catch (error) {
                 console.error("Failed to load dashboard statistics:", error);
             }
@@ -89,7 +98,11 @@ export default function Dashboard() {
 
             <StatisticsCards stats={stats} />
 
-            <ProgressCard />
+            <ProgressCard
+                completionPercentage={completionPercentage}
+                completedAssignments={stats.completed}
+                totalAssignments={stats.total}
+            />
         </div>
     );
 }

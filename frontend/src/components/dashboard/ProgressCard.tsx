@@ -1,6 +1,14 @@
-export default function ProgressCard() {
-    const completionPercentage = 0;
+interface ProgressCardProps {
+    completionPercentage: number;
+    completedAssignments: number;
+    totalAssignments: number;
+}
 
+export default function ProgressCard({
+    completionPercentage,
+    completedAssignments,
+    totalAssignments,
+}: ProgressCardProps) {
     return (
         <div className="bg-white rounded-xl shadow-md p-6 mt-6">
             <div className="flex items-center justify-between">
@@ -21,7 +29,7 @@ export default function ProgressCard() {
             </div>
 
             <p className="text-sm text-gray-500 mt-3">
-                Complete your assignments to increase your progress.
+                {completedAssignments} of {totalAssignments} assignments completed.
             </p>
         </div>
     );
