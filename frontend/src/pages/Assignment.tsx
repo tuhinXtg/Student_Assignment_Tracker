@@ -17,6 +17,7 @@ interface Assignment {
 
 export default function Assignments() {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
+    const [selectedStatus, setSelectedStatus] = useState("All");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -62,11 +63,38 @@ export default function Assignments() {
         }
     };
 
+    const filteredAssignments =
+        selectedStatus === "All"
+            ? assignments
+            : assignments.filter(
+                (assignment) => assignment.status === selectedStatus
+            );
+
     return (
         <div className="p-6">
             <h1 className="text-3xl font-bold mb-6">
                 My Assignments
             </h1>
+
+            <div className="mb-6">
+                <label
+                    htmlFor="statusFilter"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                    Filter by Status
+                </label>
+
+                <select
+                    id="statusFilter"
+                    value={selectedStatus}
+                    onChange={(event) => setSelectedStatus(event.target.value)}
+                    className="w-full md:w-64 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="All">All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
 
             {error && (
                 <p className="text-red-600 mb-4">
@@ -74,11 +102,11 @@ export default function Assignments() {
                 </p>
             )}
 
-            {assignments.length === 0 ? (
+            {filteredAssignments.length === 0 ? (
                 <p>No assignments available.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {assignments.map((assignment) => (
+                    {filteredAssignments.map((assignment) => (
                         <div
                             key={assignment._id}
                             className="bg-white rounded-xl shadow-md p-6"
